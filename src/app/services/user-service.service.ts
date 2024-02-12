@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 
 export interface User {
   id: number;
@@ -20,7 +20,7 @@ export interface User {
 }
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class UserServiceService {
   public users: User[] = [];
@@ -35,13 +35,16 @@ export class UserServiceService {
     this.users = this.users.filter((user) => user.id !== id);
   }
 
- 
-  public editUser(updatedUser: Pick<User, 'id' |'name' | 'email' | 'phone' | 'website'>) {
-    this.users = this.users.map(user => {
-      if (user.id === updatedUser.id) {
-        return {...user, ...updatedUser};
-      }
-      return user;
-    })
+  public editUser(
+    updatedUser: Pick<
+      User,
+      "id" | "name" | "email" | "phone" | "website" | "username"
+    >
+  ) {
+    const editedUsers = this.users.map((user) =>
+      user.id === updatedUser.id ? updatedUser : user
+    );
+    this.users = editedUsers;
+    return editedUsers;
   }
 }

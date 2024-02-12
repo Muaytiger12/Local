@@ -1,12 +1,10 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class UserLocalStorageService {
-
-    
   getItem(): any {
-    const getitem = localStorage.getItem('user');
+    const getitem = localStorage.getItem("user");
     if (getitem) {
       return JSON.parse(getitem);
     } else {
@@ -19,7 +17,7 @@ export class UserLocalStorageService {
   }
 
   removeItem(): boolean {
-    localStorage.removeItem('user');
+    localStorage.removeItem("user");
     return true;
   }
 }
